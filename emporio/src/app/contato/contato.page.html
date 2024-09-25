@@ -27,32 +27,52 @@
 <!-- Conteúdo principal -->
 <div class="ion-page" id="main-content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar style="--background: #3c2918;">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button> <!-- Botão para abrir o menu -->
+        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> <!-- Botão para abrir o menu -->
       </ion-buttons>
-      <ion-title>
+      <ion-title style="color: whitesmoke;">
         Contato
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <div *ngIf="showSearch" class="search-container">
-    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Pesquise produtos..."></ion-searchbar>
-  </div>
-  <ion-content class="ion-padding">
-    <h2>Entre em Contato Conosco</h2>
-    
-    <h3>Nossos Contatos</h3>
-    <p>Email: <a href="mailto:contato&#64;emporio-gh.com">contato&#64;emporio-gh.com</a></p>
 
-    <p>Telefone: <a href="tel:+552112345678">(21) 1234-5678</a></p>
-    <p>WhatsApp: <a href="https://wa.me/5521998765432" target="_blank">+55 21 99876-5432</a></p>
+  <ion-content class="ion-padding page-background">
+
+    <!-- Cartão de Horário de Funcionamento -->
+    <div style="text-align: center; margin: 20px; padding: 20px; background-color: #d69d69; border-radius: 15px; color: #fff;">
+      <ion-icon name="time-outline" style="font-size: 40px; color: #522F0F;"></ion-icon>
+      <h2 style="font-weight: bold; color: #522F0F;">Horário de funcionamento</h2>
+
+      <p><strong>Seg a Sex:</strong> 08h às 20h</p>
+      <p><strong>Sábado:</strong> 08h às 18h</p>
+      <p><strong>Domingo:</strong> 08h às 15h</p>
+
+      <ion-icon name="location-outline" style="font-size: 40px; color: #522F0F; margin-top: 20px;"></ion-icon>
+      <h3 style="font-weight: bold; color: #522F0F;">Nossa localização:</h3>
+      <p>Estrada de Santa Eugênia, 994 - Paciência</p>
+      <div style="text-align: center; margin: 20px; padding: 20px; background-color: #d69d69; border-radius: 15px; color: #fff;">
+        <h3 style="font-weight: bold; color: #522F0F;">Entre em Contato Conosco</h3>
   
-    <h3>Visite Nossa Loja</h3>
-    <p>Estamos localizados em Campo Grande , Rio de Janeiro.</p>
+        <!-- Contato Instagram -->
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+          <ion-icon name="logo-instagram" style="font-size: 30px; color: #522F0F; margin-right: 10px;"></ion-icon>
+          <ion-label style="color: #fff;">&#64;emporiodaroca_gh</ion-label>
+        </div>
+  
+        <!-- Contato Telefone -->
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <ion-icon name="call-outline" style="font-size: 30px; color: #522F0F; margin-right: 10px;"></ion-icon>
+          <ion-label style="color: #fff;">(21) 96443-1994</ion-label>
+        </div>
+      </div>
+    </div>
+
+
   </ion-content>
+
   <ion-footer>
-    <ion-toolbar style="justify-content: space-around;">
+    <ion-toolbar style="justify-content: space-around; --background: #522f0f;">
       <ion-button (click)="toggleSearch()" fill="clear" class="spaced-button">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button> 
@@ -74,4 +94,4 @@
       </ion-button>
     </ion-toolbar>
   </ion-footer>
-  
+</div>

@@ -27,7 +27,8 @@
   }
   
   ion-icon {
-    font-size: 25px; //Preferred size here
+    font-size: 25px; 
+    color: whitesmoke;
   }
   
   button {
@@ -94,4 +95,10 @@
         height: auto;
         width: auto;
     }
+}
+
+.page-background,p, ul {
+  background-color: #d69d69; /* Cor de fundo desejada */
+  --ion-background-color: #d69d69; /* Configura a cor de fundo para o IonContent */
+  color: white;
 }

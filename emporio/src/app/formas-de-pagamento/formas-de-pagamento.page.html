@@ -27,11 +27,11 @@
 <!-- Conteúdo principal -->
 <div class="ion-page" id="main-content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar style="--background: #3c2918;">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button> <!-- Botão para abrir o menu -->
+        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> <!-- Botão para abrir o menu -->
       </ion-buttons>
-      <ion-title>
+      <ion-title style="color: whitesmoke;">
         Formas de Pagamentos
       </ion-title>
     </ion-toolbar>
@@ -39,8 +39,8 @@
   <div *ngIf="showSearch" class="search-container">
     <ion-searchbar [(ngModel)]="searchQuery" placeholder="Pesquise produtos..."></ion-searchbar>
   </div>
-  <ion-content class="ion-padding">
-    <h2>Formas de Pagamento Aceitas</h2>
+  <ion-content class="ion-padding page-background">
+    <h2 style="font-weight: bold; color: #522F0F;">Formas de Pagamento Aceitas</h2>
     
     <p>No <strong>Empório GH</strong>, oferecemos diversas opções para facilitar suas compras:</p>
     
@@ -53,7 +53,7 @@
       <i class="fab fa-cc-paypal payment-icon" style="color: #003c71;"></i> <!-- Azul PayPal -->
     </div>
   
-    <h3>Aceitamos:</h3>
+    <h3 style="font-weight: bold; color: #522F0F;">Aceitamos:</h3>
     <ul>
       <li>Cartões de Crédito</li>
       <li>Cartões de Débito</li>
@@ -62,9 +62,41 @@
       <li><strong>PIX</strong>: O pagamento mais rápido e prático!</li>
     </ul>
   
+    <h4 style="font-weight: bold; color: #522F0F;">1. Cartão de Crédito</h4>
+    <p>
+      Trabalhamos em <strong>parceria com as principais bandeiras de cartão de crédito</strong> utilizadas no Brasil: 
+      Visa, MasterCard, American Express, Elo e Hipercard.
+    </p>
+    <p>
+      Além disso, oferecemos a possibilidade de <strong>dividir o pagamento em até dois cartões de crédito diferentes</strong>.
+    </p>
+    <p>
+      Assim que o pagamento for confirmado, o que leva poucos minutos, iniciaremos a separação do pedido.
+    </p>
+  
+    <h4 style="font-weight: bold; color: #522F0F;">2. Boleto Bancário</h4>
+    <p>
+      Escolhendo essa opção, um boleto bancário será emitido após a finalização do pedido e enviado via e-mail.
+    </p>
+    <p>
+      Fique ligado à data de validade do boleto, pois, após essa data, não será possível efetuar o pagamento e o pedido 
+      deverá ser realizado novamente.
+    </p>
+    <p>
+      A separação do pedido será iniciada assim que o pagamento for confirmado, o que ocorre no dia útil seguinte à sua realização.
+    </p>
+  
+    <h4 style="font-weight: bold; color: #522F0F;">3. PIX</h4>
+    <p>
+      O método mais rápido e prático! Ao escolher pagar com PIX, o pagamento é confirmado instantaneamente, permitindo o início imediato da preparação do seu pedido.
+    </p>
+  
+    <h4 style="font-weight: bold; color: #522F0F;">4. AME Digital</h4>
+    <p>
+  
     <p>Escolha a forma de pagamento que melhor se adapta a você e aproveite suas compras no <strong>Empório GH</strong>.</p>
     
-  <h3>Política de Devolução e Reembolso</h3>
+  <h3 style="font-weight: bold; color: #522F0F;">Política de Devolução e Reembolso</h3>
     <p>No <strong>Empório GH</strong>, a sua satisfação é nossa prioridade. 
     Caso você não fique satisfeito com a sua compra, aceitamos devoluções em até 7 dias após a entrega do produto, 
     desde que ele esteja em sua embalagem original e sem sinais de uso.</p>
@@ -72,7 +104,7 @@
     que estará à disposição para ajudá-lo no processo.</p>
   </ion-content>
   <ion-footer>
-    <ion-toolbar style="justify-content: space-around;">
+    <ion-toolbar style="justify-content: space-around; --background: #522f0f;">
       <ion-button (click)="toggleSearch()" fill="clear" class="spaced-button">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>

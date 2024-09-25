@@ -27,7 +27,8 @@
   }
   
   ion-icon {
-    font-size: 25px; //Preferred size here
+    font-size: 25px;
+    color: whitesmoke;
   }
   
   button {
@@ -48,11 +49,7 @@
         margin: 0 3px; /* Aumenta o espaçamento em telas maiores */
     }
 }
-@media (min-width: 375px) and (orientation: landscape) {
-    .spaced-button {
-        margin: 0 8px; /* Aumenta o espaçamento em paisagem */
-    }
-}
+
 
 @media (min-width: 375px) { /* Dispositivos pequenos e acima */
     .spaced-button {
@@ -77,4 +74,15 @@
         height: auto;
         width: auto;
     }
+}
+
+.page-background,p, ul {
+  background-color: #d69d69; /* Cor de fundo desejada */
+  --ion-background-color: #d69d69; /* Configura a cor de fundo para o IonContent */
+  color: white;
+}
+
+h2,h3{
+  font-weight: bold; 
+  color: #522F0F;
 }
