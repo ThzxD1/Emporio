@@ -19,6 +19,19 @@ const routes: Routes = [
     path: 'carrinho',
     loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
   },
+  {
+    path: 'sobre-nos',
+    loadChildren: () => import('./sobre-nos/sobre-nos.module').then( m => m.SobreNosPageModule)
+  },
+  {
+    path: 'contato',
+    loadChildren: () => import('./contato/contato.module').then( m => m.ContatoPageModule)
+  },
+  {
+    path: 'formas-de-pagamento',
+    loadChildren: () => import('./formas-de-pagamento/formas-de-pagamento.module').then( m => m.FormasDePagamentoPageModule)
+  },
+  
 ];
 
 @NgModule({

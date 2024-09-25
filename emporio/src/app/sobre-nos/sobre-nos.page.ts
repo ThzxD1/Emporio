@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-carrinho',
-  templateUrl: './carrinho.page.html',
-  styleUrls: ['./carrinho.page.scss'],
+  selector: 'app-sobre-nos',
+  templateUrl: './sobre-nos.page.html',
+  styleUrls: ['./sobre-nos.page.scss'],
 })
-export class CarrinhoPage implements OnInit {
+export class SobreNosPage implements OnInit {
   showSearch: boolean = false; // Variável para controlar a visibilidade da caixa de pesquisa
   searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
 

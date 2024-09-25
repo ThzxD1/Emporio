@@ -33,63 +33,65 @@
   button {
     margin-left: auto;
   }
-  
-  .image-container {
+
+  ion-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
   }
   
-  img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Cria o círculo */
-    object-fit: cover;  /* Ajusta a imagem para cobrir o espaço */
+  .payment-methods {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Margem acima e abaixo */
   }
   
-  ion-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  .payment-icon {
+    font-size: 40px; /* Tamanho do ícone */
+    margin: 0 10px; /* Espaçamento entre os ícones */
   }
   
-  .spaced-button {
+  .centered-toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  } 
+
+.spaced-button {
     margin: 0 10px; /* Espaçamento padrão */
-  }
-  @media (min-width: 300px) { /* Dispositivos pequenos e acima */
+}
+@media (min-width: 300px) { /* Dispositivos pequenos e acima */
     .spaced-button {
         margin: 0 3px; /* Aumenta o espaçamento em telas maiores */
     }
-  }
-  @media (min-width: 375px) and (orientation: landscape) {
+}
+@media (min-width: 375px) and (orientation: landscape) {
     .spaced-button {
         margin: 0 8px; /* Aumenta o espaçamento em paisagem */
     }
-  }
-  
-  @media (min-width: 375px) { /* Dispositivos pequenos e acima */
+}
+
+@media (min-width: 375px) { /* Dispositivos pequenos e acima */
     .spaced-button {
         margin: 0 8px; /* Aumenta o espaçamento em telas maiores */
     }
-  }
-  @media (min-width: 425px) { /* Dispositivos pequenos e acima */
+}
+@media (min-width: 425px) { /* Dispositivos pequenos e acima */
     .spaced-button {
         margin: 0 14px; /* Aumenta o espaçamento em telas maiores */
     }
-  }
-  
-  @media (min-width: 768px) { /* Tablets e acima */
+}
+
+@media (min-width: 768px) { /* Tablets e acima */
     .spaced-button {
         margin: 0 48px; /* Aumenta ainda mais o espaçamento em telas maiores */
     }
-  }
-  
-  @media (orientation: landscape) {
+}
+
+@media (orientation: landscape) {
     .spaced-button {
         margin: 0 48px; /* Aumenta o espaçamento em paisagem */
         height: auto;
         width: auto;
     }
-  }
-  
+}
