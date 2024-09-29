@@ -72,9 +72,9 @@ swiper-slide img {
   }
 }
 
-@media (min-width: 375px) { /* Dispositivos pequenos e acima */
+@media (min-width: 390px) { /* Dispositivos pequenos e acima */
   .spaced-button {
-      margin: 0 8px; /* Aumenta o espaçamento em telas maiores */
+      margin: 0 10px; /* Aumenta o espaçamento em telas maiores */
   }
 }
 @media (min-width: 425px) { /* Dispositivos pequenos e acima */
@@ -96,6 +96,7 @@ swiper-slide img {
       width: auto;
   }
 }
+
 
 ion-footer {
   position: fixed;

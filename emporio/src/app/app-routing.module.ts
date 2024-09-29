@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'formas-de-pagamento',
     loadChildren: () => import('./formas-de-pagamento/formas-de-pagamento.module').then( m => m.FormasDePagamentoPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
   
 ];
 

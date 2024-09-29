@@ -33,42 +33,39 @@
       </ion-buttons>
       <ion-title style="color:#d69d69; text-align: justify; margin-left: 30px;">
         Emporio da Roça GH
-       </ion-title>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
+  <div *ngIf="showSearch" class="search-container">
+    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Pesquise produtos..."></ion-searchbar>
+  </div>
 
-  <ion-content class="ion-padding page-background">
+  <ion-content class="ion-padding">
+    <!-- Formulário de Login -->
+    <h2 style="font-weight: bold; color: #3c2918; text-align: center;">Login</h2>
+    <form>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" required></ion-input>
+      </ion-item>
 
-    <!-- Cartão de Horário de Funcionamento -->
-    <div style="text-align: center; margin: 20px; padding: 20px; background-color: #d69d69; border-radius: 15px; color: #fff;">
-      <ion-icon name="time-outline" style="font-size: 40px; color: #522F0F;"></ion-icon>
-      <h2 style="font-weight: bold; color: #522F0F;">Horário de funcionamento</h2>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
 
-      <p><strong>Seg a Sex:</strong> 08h às 20h</p>
-      <p><strong>Sábado:</strong> 08h às 18h</p>
-      <p><strong>Domingo:</strong> 08h às 15h</p>
+      <ion-button expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
+        Entrar
+      </ion-button>
+    </form>
 
-      <ion-icon name="location-outline" style="font-size: 40px; color: #522F0F; margin-top: 20px;"></ion-icon>
-      <h3 style="font-weight: bold; color: #522F0F;">Nossa localização:</h3>
-      <p>Estrada de Santa Eugênia, 994 - Paciência</p>
-      <div style="text-align: center; margin: 20px; padding: 20px; background-color: #d69d69; border-radius: 15px; color: #fff;">
-        <h3 style="font-weight: bold; color: #522F0F;">Entre em Contato Conosco</h3>
-  
-        <!-- Contato Instagram -->
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
-          <ion-icon name="logo-instagram" style="font-size: 30px; color: #522F0F; margin-right: 10px;"></ion-icon>
-          <ion-label style="color: #fff;">&#64;emporiodaroca_gh</ion-label>
-        </div>
-  
-        <!-- Contato Telefone -->
-        <div style="display: flex; align-items: center; justify-content: center;">
-          <ion-icon name="call-outline" style="font-size: 30px; color: #522F0F; margin-right: 10px;"></ion-icon>
-          <ion-label style="color: #fff;">(21) 96443-1994</ion-label>
-        </div>
-      </div>
-    </div>
-
-
+    <!-- Texto de recuperação de senha e cadastro -->
+    <p style="text-align: center; color: white; margin-top: 20px;">
+      Esqueceu sua senha? <a href="/recuperar-senha" style="color: #d69d69;">Recuperar senha</a>
+    </p>
+    <p style="text-align: center; color: white;">
+      Não tem uma conta? <a href="/cadastro" style="color: #d69d69;">Cadastre-se</a>
+    </p>
   </ion-content>
 
   <ion-footer>
@@ -80,15 +77,15 @@
       <ion-button href="/catalogo" fill="clear" class="spaced-button">
         <ion-icon name="newspaper-outline"></ion-icon>
       </ion-button>
-  
+
       <ion-button href="/home" fill="clear" class="spaced-button">
         <ion-icon name="home-outline"></ion-icon>
       </ion-button>
-  
+
       <ion-button href="/carrinho" fill="clear" class="spaced-button">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
-  
+
       <ion-button href="/login" fill="clear" class="spaced-button">
         <ion-icon name="person-circle-outline"></ion-icon>
       </ion-button>
