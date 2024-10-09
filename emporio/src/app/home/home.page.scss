@@ -104,3 +104,27 @@ ion-footer {
   left: 0;
   right: 0;
 }
+.img-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.rounded-img {
+  width: 80px;  /* Ajuste o tamanho das imagens conforme necessário */
+  height: 80px;
+  border-radius: 50%; /* Torna as imagens arredondadas */
+  object-fit: cover;  /* Mantém a proporção da imagem */
+}
+swiper-container {
+  height: auto;
+}
+
+.img-title {
+  margin-top: 8px;  /* Espaçamento entre a imagem e o título */
+  font-size: 14px;  /* Tamanho da fonte do título */
+  color: #333;  /* Cor do título, ajuste conforme o design */
+  text-align: center; /* Centraliza o texto abaixo da imagem */
+}
