@@ -36,7 +36,7 @@ export class ContatoPage implements OnInit {
 
       const map = new google.maps.Map(mapRef, {
         center: { lat: -22.925321578979492, lng: -43.63520812988281 },
-        zoom: 15,
+        zoom: 18,
       });
       const marker = new google.maps.Marker({
         position: { lat: -22.925321578979492, lng: -43.63520812988281 }, // Posição do marcador
