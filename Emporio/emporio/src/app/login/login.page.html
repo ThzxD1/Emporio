@@ -43,18 +43,19 @@
   <ion-content class="ion-padding">
     <!-- Formulário de Login -->
     <h2 style="font-weight: bold; color: #3c2918; text-align: center;">Login</h2>
-    <form>
+    <form [formGroup]="loginForm">
       <ion-item>
         <ion-label position="floating">E-mail</ion-label>
-        <ion-input type="email" required></ion-input>
+        <ion-input formControlName="email" type="email" required></ion-input>
+        
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" required></ion-input>
+        <ion-input formControlName="password" type="password" required></ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
+      <ion-button (click)="login()" expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
         Entrar
       </ion-button>
     </form>

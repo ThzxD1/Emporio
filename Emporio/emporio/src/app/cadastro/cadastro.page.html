@@ -40,11 +40,12 @@
   <ion-content class="ion-padding">
     <!-- Formulário de Cadastro -->
     <h2 style="font-weight: bold; color: #3c2918; text-align: center;">Cadastro</h2>
-    <form>
+    <form [formGroup]="regForm" novalidate>
       <ion-item>
         <ion-label position="floating">Nome</ion-label>
-        <ion-input type="text" required></ion-input>
+        <ion-input formControlName="fullname" type="text" required></ion-input>
       </ion-item>
+    
 
       <ion-item>
         <ion-label position="floating">CPF</ion-label>
@@ -58,7 +59,7 @@
 
       <ion-item>
         <ion-label position="floating">E-mail</ion-label>
-        <ion-input type="email" required></ion-input>
+        <ion-input formControlName="email" type="email" required></ion-input>
       </ion-item>
 
       <ion-item>
@@ -68,10 +69,10 @@
 
       <ion-item>
         <ion-label position="floating">Endereço</ion-label>
-        <ion-input type="text" required></ion-input>
+        <ion-input formControlName="password" type="text" required></ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
+      <ion-button (click)="signUp()" expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
         Cadastrar
       </ion-button>
     </form>
