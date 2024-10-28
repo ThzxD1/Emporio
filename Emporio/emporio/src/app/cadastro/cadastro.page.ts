@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { AutheticationService } from '../authetication.service';
 import { pawSharp } from 'ionicons/icons';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +16,7 @@ export class CadastroPage implements OnInit {
   searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
   regForm!: FormGroup;
 
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AutheticationService, public router : Router) {}
+  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AutheticationService, public router : Router, private firebaseService: FirebaseService) {}
 
   toggleSearch() {
     this.showSearch = !this.showSearch; // Alterna a visibilidade da caixa de pesquisa
@@ -30,7 +31,14 @@ export class CadastroPage implements OnInit {
       password:['',
         Validators.required
       ]
-    })
+    });
+
+    const cadastrarBotao = document.getElementById('cadastrar');
+    if (cadastrarBotao) {
+      cadastrarBotao?.addEventListener('click', () => this.cadastrar());
+    } else {
+      console.error('deu nada')
+    }
   }
   get errorControl(){
     return this.regForm?.controls;
@@ -55,6 +63,26 @@ export class CadastroPage implements OnInit {
 
       }
     }
+  }
+
+  cadastrar() {
+    const nome = (document.getElementById('nome') as HTMLInputElement).value;
+    const endereco = (document.getElementById('endereco') as HTMLInputElement).value;
+    const cpf = (document.getElementById('cpf') as HTMLInputElement).value;
+    const dataNasc = (document.getElementById('dataNasc') as HTMLInputElement).value;
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const senha = (document.getElementById('senha') as HTMLInputElement).value;
+
+    this.firebaseService
+      .cadCli(nome, endereco, cpf, dataNasc, email, senha)
+      .then(() => {
+        alert('Usuário cadastrado com sucesso!');
+        this.router.navigate(['/home']);
+      })
+      .catch((error) => {
+        console.error('Erro ao cadastrar usuário:', error);
+        alert('Erro ao cadastrar usuário!');
+      });
   }
 
 }

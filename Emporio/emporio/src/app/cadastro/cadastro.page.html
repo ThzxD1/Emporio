@@ -43,36 +43,36 @@
     <form [formGroup]="regForm" novalidate>
       <ion-item>
         <ion-label position="floating">Nome</ion-label>
-        <ion-input formControlName="fullname" type="text" required></ion-input>
+        <ion-input formControlName="fullname" id="nome" type="text" required></ion-input>
       </ion-item>
     
 
       <ion-item>
         <ion-label position="floating">CPF</ion-label>
-        <ion-input type="text" required></ion-input>
+        <ion-input type="text"  id="cpf" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Data de Nascimento</ion-label>
-        <ion-input type="text" required></ion-input>
+        <ion-input type="text" id="dataNasc" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">E-mail</ion-label>
-        <ion-input formControlName="email" type="email" required></ion-input>
+        <ion-input formControlName="email" id="email" type="email" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" required></ion-input>
+        <ion-input type="password" id="senha" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Endereço</ion-label>
-        <ion-input formControlName="password" type="text" required></ion-input>
+        <ion-input formControlName="password" id="endereco" type="text" required></ion-input>
       </ion-item>
 
-      <ion-button (click)="signUp()" expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
+      <ion-button id="cadastrar" (click)="signUp()" expand="block" type="submit" style="--background: #3c2918; margin-top: 20px;">
         Cadastrar
       </ion-button>
     </form>
