@@ -1,0 +1,281 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-icon {
+  font-size: 25px;
+  color: whitesmoke;
+}
+
+button {
+  margin-left: auto;
+}
+
+swiper-container {
+  width: 100%;
+  height: auto; /* Define a altura do slide inicialmente */
+  display: flex; 
+  flex-direction: column; 
+  height: 100vh;
+  overflow: hidden;
+}
+
+swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (orientation: landscape) {
+  swiper-container {
+    
+    height: auto;
+    width: auto;
+  }
+}
+
+
+
+.spaced-button {
+  margin: 0 10px; /* Espaçamento padrão */
+}
+@media (min-width: 300px) { /* Dispositivos pequenos e acima */
+  .spaced-button {
+      margin: 0 3px; /* Aumenta o espaçamento em telas maiores */
+  }
+}
+@media (min-width: 375px) and (orientation: landscape) {
+  .spaced-button {
+      margin: 0 8px; /* Aumenta o espaçamento em paisagem */
+  }
+}
+
+@media (min-width: 390px) { /* Dispositivos pequenos e acima */
+  .spaced-button {
+      margin: 0 10px; /* Aumenta o espaçamento em telas maiores */
+  }
+}
+@media (min-width: 425px) { /* Dispositivos pequenos e acima */
+  .spaced-button {
+      margin: 0 14px; /* Aumenta o espaçamento em telas maiores */
+  }
+}
+
+@media (min-width: 768px) { /* Tablets e acima */
+  .spaced-button {
+      margin: 0 48px; /* Aumenta ainda mais o espaçamento em telas maiores */
+  }
+}
+
+@media (orientation: landscape) {
+  .spaced-button {
+      margin: 0 48px; /* Aumenta o espaçamento em paisagem */
+      height: auto;
+      width: auto;
+  }
+}
+
+
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.rounded-img {
+  width: 80px;  /* Ajuste o tamanho das imagens conforme necessário */
+  height: 80px;
+  border-radius: 50%; /* Torna as imagens arredondadas */
+  object-fit: cover;  /* Mantém a proporção da imagem */
+}
+swiper-container {
+  height: auto;
+}
+
+.img-title {
+  margin-top: 8px;  /* Espaçamento entre a imagem e o título */
+  font-size: 14px;  /* Tamanho da fonte do título */
+  color: #333;  /* Cor do título, ajuste conforme o design */
+  text-align: center; /* Centraliza o texto abaixo da imagem */
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Oculta a barra de rolagem */
+}
+
+/* Estilos para cada produto */
+.product-card {
+  min-width: 200px;
+  margin-right: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+/* Estilos da imagem do produto */
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Nome e preço do produto */
+.product-name {
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #008000;
+}
+
+/* Botões de navegação */
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.carousel-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff6347;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.carousel-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+h2 {
+  margin: 10px 20px 5px;
+  text-align: left;
+}
+
+ /* Contêiner principal do carrossel */
+ .offers-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f8f8; /* Fundo geral para contraste */
+}
+
+.offers-carousel::-webkit-scrollbar {
+  display: none; /* Oculta a barra de rolagem */
+}
+
+/* Cartão de oferta */
+.offer-card {
+  scroll-snap-align: center;
+  width: 180px;
+  height: 220px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Elementos de destaque */
+.offer-badge {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.offer-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c70000; /* Texto vermelho */
+  margin-top: 90px;
+  text-align: center;
+}
+
+.offer-discount {
+  font-size: 40px;
+  color: #c70000; /* Destaque no desconto */
+}
+
+h3 {
+  margin: 10px 20px 5px;
+  text-align: left;
+}
+
+body, ion-content {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Remove o scroll horizontal */
+}
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box; /* Evita problemas com margens internas */
+}
+
+* {
+  box-sizing: border-box;
+}

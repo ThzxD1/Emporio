@@ -1,0 +1,81 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  ion-icon {
+    font-size: 25px;
+    color: whitesmoke;
+  }
+  
+  button {
+    margin-left: auto;
+  }
+
+  .centered-toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  } 
+ .spaced-button {
+    margin: 0 10px; /* Espaçamento padrão */
+  }
+  @media (min-width: 300px) { /* Dispositivos pequenos e acima */
+    .spaced-button {
+        margin: 0 3px; /* Aumenta o espaçamento em telas maiores */
+    }
+  }
+  @media (min-width: 375px) and (orientation: landscape) {
+    .spaced-button {
+        margin: 0 8px; /* Aumenta o espaçamento em paisagem */
+    }
+  }
+  
+  @media (min-width: 390px) { /* Dispositivos pequenos e acima */
+    .spaced-button {
+        margin: 0 10px; /* Aumenta o espaçamento em telas maiores */
+    }
+  }
+  @media (min-width: 425px) { /* Dispositivos pequenos e acima */
+    .spaced-button {
+        margin: 0 14px; /* Aumenta o espaçamento em telas maiores */
+    }
+  }
+  
+  @media (min-width: 768px) { /* Tablets e acima */
+    .spaced-button {
+        margin: 0 48px; /* Aumenta ainda mais o espaçamento em telas maiores */
+    }
+  }
+  
+  @media (orientation: landscape) {
+    .spaced-button {
+        margin: 0 48px; /* Aumenta o espaçamento em paisagem */
+        height: auto;
+        width: auto;
+    }
+  }
+  
