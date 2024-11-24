@@ -1,7 +1,0 @@
-{
-  "name": "emporio",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}

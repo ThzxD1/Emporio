@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AutheticationService } from '../authetication.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
   showSearch: boolean = false; // Variável para controlar a visibilidade da caixa de pesquisa
   searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
 
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AutheticationService) {}
+  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AutheticationService, public alertController: AlertController) {}
   toggleSearch() {
     this.showSearch = !this.showSearch; // Alterna a visibilidade da caixa de pesquisa
   }
@@ -35,7 +36,11 @@ export class LoginPage implements OnInit {
   get errorControl(){
     return this.loginForm?.controls;
   }
-  
+
+   onResetPassword() {
+    this.authService.resetPasswordPrompt();
+  }
+
   async login(){
     const loading = await this.loadingCtrl.create();
     await loading.present();
