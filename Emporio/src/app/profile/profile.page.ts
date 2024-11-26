@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../services/firebase.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AutheticationService } from '../authetication.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-profile',
@@ -25,24 +24,34 @@ export class ProfilePage implements OnInit {
       if (!user) {
         this.router.navigate(['/login']); // Redireciona para o login se não estiver logado
       } else {
-        this.loadUserData(user.uid);
+        this.loadUserData(); // Carrega os dados do usuário se ele estiver logado
       }
     });
   }
+  
   async logout() {
     await this.autheticationService.logout();
   }
-  // MENOR CONSERTA ESSA PORRA PLMDS
-  loadUserData(uid: string) {
-    this.autheticationService.getUserProfile().subscribe(
-      data => {
-        this.user = data;
-        this.isLoading = false;
-      },
-      error => {
-        console.error("Erro ao carregar os dados do usuário:", error);
-        this.isLoading = false;
-      }
-    );
+
+  // Método para carregar os dados do usuário
+  async loadUserData() {
+    try {
+      // Aguardando a observação do perfil do usuário
+      this.autheticationService.getUserProfile().subscribe({
+        next: (userData: any) => {
+          this.user = userData;
+          console.log('Dados do usuário carregados:', this.user);
+          this.isLoading = false;
+        },
+        error: (err: any) => {
+          console.error('Erro ao carregar os dados do usuário:', err);
+          this.isLoading = false;
+          this.router.navigate(['/login']); // Caso haja erro, redireciona para login
+        },
+      });
+    } catch (error) {
+      console.error('Erro ao carregar os dados do usuário:', error);
+      this.isLoading = false;
+    }
   }
 }

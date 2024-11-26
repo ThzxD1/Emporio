@@ -1,91 +1,123 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AlertController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AutheticationService {
-  auth: any;
-  router: any;
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable();
 
-  constructor(public ngFireAuth: AngularFireAuth,private firestore: AngularFirestore, public alertController: AlertController ) { }
+  constructor(
+    private ngFireAuth: AngularFireAuth,
+    private firestore: AngularFirestore,
+    private alertController: AlertController
+  ) {
+    this.initializeAuthListener();
+  }
 
-  async registerUser(email: string, password: string, userData: any) {
-    try {
-      // Cria o usuário com email e senha
-      const userCredential = await this.ngFireAuth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-  
-      const userId = userCredential.user?.uid;
-  
-      // Verifica se o usuário foi criado e tem um UID válido
-      if (userId) {
-        // Salva os dados no Firestore
-        await this.firestore.collection('users').doc(userId).set({
-          fullname: userData.fullname,
-          cpf: userData.cpf,
-          dataNasc: userData.dataNasc,
-          endereco: userData.endereco,
-          email: userData.email,
-          createdAt: new Date(),
-        });
+  private initializeAuthListener() {
+    this.ngFireAuth.authState.subscribe((user) => {
+      if (user) {
+        this.loadUserData(user.uid);
       } else {
-        throw new Error('Usuário não encontrado após criação.');
+        this.userSubject.next(null);
       }
+    });
+  }
+
+  private async loadUserData(uid: string) {
+    const firestore = getFirestore();
+    const userDocRef = doc(firestore, 'users', uid);  // Usando uid como string
+    const userData = await getDoc(userDocRef);
   
-      return userCredential; // Retorna a credencial do usuário
-  
-    } catch (error) {
-      console.error("Erro ao registrar o usuário:", error);
-      throw error; // Lança o erro para ser tratado onde o método for chamado
+    if (userData.exists()) {
+      this.userSubject.next(userData.data());
+    } else {
+      console.log('Documento do usuário não encontrado no Firestore.');
     }
   }
+  
+  async register(
+    fullname: string,
+    email: string,
+    password: string,
+    cpf: number,
+    dataNasc: number,
+    endereco: string,
+    genero: string
+  ) {
+    const auth = getAuth();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      const firestore = getFirestore();
+      const userRef = doc(firestore, 'users', user.uid);
+      await setDoc(userRef, {
+        fullname: fullname,
+        cpf: cpf,
+        dataNasc: dataNasc,
+        endereco: endereco,
+        email: email,
+        uid: user.uid,
+        createdAt: new Date(),
+        genero: genero,
+      });
+  
+      // Passando user.uid como string para loadUserData
+      this.loadUserData(user.uid);
+  
+      return userCredential;
+    } catch (error) {
+      console.error('Erro ao registrar usuário', error);
+      throw error;
+    }
+  }
+  
+  
+  
 
   async saveUserData(uid: string, userData: any) {
     try {
-      // Salvando os dados do usuário na coleção 'users' usando o uid como documento
-      await this.firestore.collection('users').doc(uid).set({
-        fullname: userData.fullname,
-        cpf: userData.cpf,
-        dataNasc: userData.dataNasc,
-        endereco: userData.endereco,
-        email: userData.email,
-        createdAt: new Date(),
-      });
-      console.log("Dados do usuário salvos com sucesso!");
+      await this.firestore.collection('users').doc(uid).set(userData);
+      console.log('Dados do usuário salvos com sucesso!');
     } catch (error) {
-      console.error("Erro ao salvar os dados do usuário:", error);
-      throw error; // Lança o erro para ser tratado onde o método for chamado
+      console.error('Erro ao salvar os dados do usuário:', error);
+      throw error;
     }
   }
-// MENOR CONSERTA ESSA PORRA PLMDS
+
   getUserProfile(): Observable<any> {
-    return new Observable(observer => {
-      this.auth.authState.subscribe((user: { uid: string | undefined; }) => {
+    return new Observable((observer) => {
+      this.ngFireAuth.authState.subscribe((user) => {
         if (user) {
-          this.firestore.collection('users').doc(user.uid).get().subscribe((doc) => {
-            if (doc.exists) {
-              observer.next(doc.data());
-            } else {
-              observer.error("User not found");
-            }
-          });
+          this.firestore
+            .collection('users')
+            .doc(user.uid)
+            .get()
+            .subscribe((doc) => {
+              if (doc.exists) {
+                observer.next(doc.data());
+              } else {
+                observer.error('Usuário não encontrado.');
+              }
+            });
         } else {
-          observer.error("No user logged in");
+          observer.error('Nenhum usuário logado.');
         }
       });
     });
   }
-  
-  async loginUser(email:string,password:string){
-    return await this.ngFireAuth.signInWithEmailAndPassword(email,password)
+
+
+  async loginUser(email: string, password: string) {
+    return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
 
   async resetPasswordPrompt(): Promise<void> {
@@ -120,14 +152,16 @@ export class AutheticationService {
               await this.ngFireAuth.sendPasswordResetEmail(data.email);
               const successAlert = await this.alertController.create({
                 header: 'Sucesso',
-                message: 'Um e-mail para redefinição de senha foi enviado. Verifique sua caixa de entrada.',
+                message:
+                  'Um e-mail para redefinição de senha foi enviado. Verifique sua caixa de entrada.',
                 buttons: ['OK'],
               });
               await successAlert.present();
             } catch (error) {
               const errorAlert = await this.alertController.create({
                 header: 'Erro',
-                message: 'Ocorreu um problema ao enviar o e-mail. Verifique o endereço ou tente novamente mais tarde.',
+                message:
+                  'Ocorreu um problema ao enviar o e-mail. Verifique o endereço ou tente novamente mais tarde.',
                 buttons: ['OK'],
               });
               await errorAlert.present();
@@ -139,23 +173,13 @@ export class AutheticationService {
 
     await alert.present();
   }
-  
+
   async logout() {
     try {
-      await this.ngFireAuth.signOut(); // Desconecta o usuário
+      await this.ngFireAuth.signOut();
       console.log('Usuário deslogado com sucesso!');
-      this.router.navigate(['/login']); // Redireciona para a página de login
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
     }
   }
-
-  async signOut(){
-    return await this.ngFireAuth.signOut()
-  }
-
-  async getProfile(){
-    return await this.ngFireAuth.currentUser
-  }
-  
 }

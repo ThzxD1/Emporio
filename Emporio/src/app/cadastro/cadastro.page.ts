@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AutheticationService } from '../authetication.service';
-import { pawSharp } from 'ionicons/icons';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../services/firebase.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,11 +14,17 @@ export class CadastroPage implements OnInit {
   searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
   regForm!: FormGroup;
 
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AutheticationService, public router : Router, private firebaseService: FirebaseService, private ngFireAuth: AngularFireAuth) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public authService: AutheticationService,
+    public router: Router
+  ) {}
 
   toggleSearch() {
     this.showSearch = !this.showSearch; // Alterna a visibilidade da caixa de pesquisa
   }
+
   ngOnInit() {
     this.regForm = this.formBuilder.group({
       fullname: ['', [Validators.required]],
@@ -31,12 +34,12 @@ export class CadastroPage implements OnInit {
       password: ['', [Validators.required]],
       endereco: ['', [Validators.required]],
     });
-
   }
-  get errorControl(){
+
+  get errorControl() {
     return this.regForm?.controls;
   }
-  
+
   async signUp() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -46,11 +49,15 @@ export class CadastroPage implements OnInit {
         // Obtendo os dados do formulário
         const formData = this.regForm.value;
 
-        // Chamando o método registerUser passando os dados
-        const userCredential = await this.authService.registerUser(
+        // Chamando o método register passando os dados do formulário
+        const userCredential = await this.authService.register(
+          formData.fullname,
           formData.email,
           formData.password,
-          formData // Passa os dados adicionais para o Firestore
+          formData.cpf,
+          formData.dataNasc,
+          formData.endereco,
+          'Masculino'  // Exemplo de valor fixo para gênero, pode ser alterado conforme o seu formulário
         );
 
         if (userCredential) {
@@ -67,7 +74,4 @@ export class CadastroPage implements OnInit {
       // Exibe alerta caso o formulário não seja válido
     }
   }
-
-
-
 }
