@@ -126,7 +126,7 @@ swiper-container {
 
 .img-title {
   margin-top: 8px;  /* Espaçamento entre a imagem e o título */
-  font-size: 14px;  /* Tamanho da fonte do título */
+  font-size: 18px;  /* Tamanho da fonte do título */
   color: #333;  /* Cor do título, ajuste conforme o design */
   text-align: center; /* Centraliza o texto abaixo da imagem */
 }
@@ -144,14 +144,44 @@ swiper-container {
 
 /* Estilos para cada produto */
 .product-card {
+  background-color: #3c2918;
+  flex: 0 0 200px;
+  max-height: 400px;
   min-width: 200px;
   margin-right: 20px;
-  background-color: #f8f8f8;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   scroll-snap-align: center;
   text-align: center;
+  color: white;
+}
+
+.promo-card{
+  flex: 0 0 220px; /* Largura fixa */
+  max-height: 300px; /* Altura máxima */
+  min-width: 200px; /* Largura mínima */
+  margin-right: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+  scroll-snap-align: center;
+}
+
+.product-image {
+  width: 100%; /* A imagem ocupa toda a largura do card */
+  height: 100%; /* A imagem ocupa toda a altura do card */
+  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+  display: block;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Estilos da imagem do produto */
@@ -169,7 +199,7 @@ swiper-container {
 
 .product-price {
   font-size: 16px;
-  color: #008000;
+  color: white;
 }
 
 /* Botões de navegação */

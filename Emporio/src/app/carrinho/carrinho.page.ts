@@ -1,20 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CarrinhoService } from '../services/carrinho.service';
+
 
 @Component({
   selector: 'app-carrinho',
   templateUrl: './carrinho.page.html',
   styleUrls: ['./carrinho.page.scss'],
 })
-export class CarrinhoPage implements OnInit {
-  showSearch: boolean = false; // Variável para controlar a visibilidade da caixa de pesquisa
-  searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
+export class CarrinhoPage {
+  carrinho$ = this.carrinhoService.carrinho$;
+  showSearch: boolean = false; 
+  searchQuery: string = ''; 
+  carrinhoItems: any[] = [];
 
-  constructor() {}
+  constructor(private carrinhoService: CarrinhoService) {
+    this.carrinhoService.carrinho$.subscribe((items) => {
+      this.carrinhoItems = items;
+    });
 
-  toggleSearch() {
-    this.showSearch = !this.showSearch; // Alterna a visibilidade da caixa de pesquisa
   }
+  
+  removeFromCarrinho(productId: string) {
+    this.carrinhoService.removeFromCarrinho(productId);
+  }
+  addToCarrinho(product: any) {
+    this.carrinhoService.addToCarrinho(product);
+  }
+  
   ngOnInit() {
+    
   }
-
+  
+  toggleSearch() {
+    this.showSearch = !this.showSearch; 
+  }
+ 
 }

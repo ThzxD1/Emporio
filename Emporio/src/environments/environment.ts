@@ -5,13 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyAB9gPBJ24NVB4nE5Zik_Fcnf_1izuNq5Q",
-    authDomain: "emporio-73ab8.firebaseapp.com",
-    databaseURL: "https://emporio-73ab8-default-rtdb.firebaseio.com",
-    projectId: "emporio-73ab8",
-    storageBucket: "emporio-73ab8.appspot.com",
-    messagingSenderId: "498986895145",
-    appId: "1:498986895145:web:0b24319e00b4a116151938"
+    apiKey: "AIzaSyD9i6V72hroGC5p8IohS6daf1LchzYp1jE",
+    authDomain: "emporiogh-a86ed.firebaseapp.com",
+    projectId: "emporiogh-a86ed",
+    storageBucket: "emporiogh-a86ed.firebasestorage.app",
+    messagingSenderId: "786140464845",
+    appId: "1:786140464845:web:67d402687309489c924b84",
   }
 };
 

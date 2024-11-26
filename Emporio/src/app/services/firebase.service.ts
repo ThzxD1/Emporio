@@ -5,6 +5,9 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
   providedIn: 'root'
 })
 export class FirebaseService {
+  getUserProfile() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private db: AngularFireDatabase) {}
 

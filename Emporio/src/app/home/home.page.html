@@ -56,19 +56,19 @@
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c5.png" class="rounded-img"/>
-            <p class="img-title">DESCONTOS</p>
+            <p class="img-title">Descontos</p>
           </div>
         </ion-col>
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c6.png" class="rounded-img"/>
-            <p class="img-title">+ VENDIDOS</p>
+            <p class="img-title">+ Vendidos</p>
           </div>
         </ion-col>
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c1.png" class="rounded-img"/>
-            <p class="img-title">TEMPEROS</p>
+            <p class="img-title">Temperos</p>
           </div>
         </ion-col>
       </ion-row>
@@ -78,24 +78,23 @@
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c2.png" class="rounded-img"/>
-            <p class="img-title">GRÃOS </p>
+            <p class="img-title">Grãos</p>
           </div>
         </ion-col>
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c3.png" class="rounded-img"/>
-            <p class="img-title">QUEIJOS</p>
+            <p class="img-title">Queijos</p>
           </div>
         </ion-col>
         <ion-col size="4">
           <div class="img-container">
             <img src="../../assets/c4.png" class="rounded-img"/>
-            <p class="img-title">LINGUIÇAS</p>
+            <p class="img-title">Linguiças</p>
           </div>
         </ion-col>  
       </ion-row>
     </ion-grid>
-
     <h2>Mais Vendidos</h2>
 
     <!-- Contêiner do Carrossel -->
@@ -131,24 +130,24 @@
       <!-- Adicione mais produtos conforme necessário -->
     </div>
 
-    <div class="offers-carousel">
+    <div class="carousel-container">
       <!-- Cartão 1 -->
-      <div class="offer-card">
-        <img src="../../assets/card1.png" alt="Card 1">
+      <div class="promo-card">
+        <img src="../../assets/card1.png" alt="Card 1" class="product-image">
         <div class="offer-text">
         </div>
       </div>
   
       <!-- Cartão 2 -->
-      <div class="offer-card">
-        <img src="../../assets/card2.png" alt="Card 2">
+      <div class="promo-card">
+        <img src="../../assets/card2.png" alt="Card 2" class="product-image">
         <div class="offer-text">
         </div>
       </div>
   
       <!-- Cartão 3 -->
-      <div class="offer-card">
-        <img src="../../assets/card3.png" alt="Card 3">
+      <div class="promo-card">
+        <img src="../../assets/card3.png" alt="Card 3" class="product-image">
         <div class="offer-text">
         </div>
       </div>
@@ -190,30 +189,32 @@
   
       <!-- Adicione mais produtos conforme necessário -->
     </div>
-  
-<ion-grid>
+
+
+    <ion-grid style="margin-bottom: 15px;">
       <h3>Redes Sociais</h3>
       <ion-row>
         <ion-col size="4">
           <ion-button href="https://www.facebook.com" fill="clear" class="spaced-button">
-            <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-facebook" style="color: #1877F2;"></ion-icon>
           </ion-button>
           <p class="img-title">FACEBOOK</p>
         </ion-col>
         <ion-col size="4">
           <ion-button href="https://www.instagram.com" fill="clear" class="spaced-button">
-            <ion-icon name="logo-instagram"></ion-icon>
+            <ion-icon name="logo-instagram" style="color: #E4405F;"></ion-icon>
           </ion-button>
           <p class="img-title">INSTAGRAM</p>
         </ion-col>
         <ion-col size="4">
           <ion-button href="https://api.whatsapp.com" fill="clear" class="spaced-button">
-            <ion-icon name="logo-whatsapp"></ion-icon>
+            <ion-icon name="logo-whatsapp" style="color: #25D366;"></ion-icon>
           </ion-button>
           <p class="img-title">WHATSAPP</p>
         </ion-col>
       </ion-row>
     </ion-grid>
+    
 
   </ion-content>
 
@@ -238,9 +239,9 @@
       <ion-icon name="cart-outline"></ion-icon>
     </ion-button>
 
-    <ion-button href="/login" fill="clear" class="spaced-button">
+    <ion-button (click)="navigateToPage()" fill="clear" class="spaced-button">
       <ion-icon name="person-circle-outline"></ion-icon>
-    </ion-button>
+    </ion-button>    
   </ion-toolbar>
 </ion-footer>
 
