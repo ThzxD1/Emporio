@@ -26,12 +26,12 @@
 </ion-menu>
 
 
-<!-- Conteúdo principal -->
+
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar style="--background: #3c2918;">
       <ion-buttons slot="start">
-        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> <!-- Botão para abrir o menu -->
+        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> 
       </ion-buttons>
       <ion-title style="color:#d69d69; text-align: justify; margin-left: 30px;">
         Emporio da Roça GH
@@ -44,14 +44,14 @@
   </div>
 
   <ion-content>
-    <!-- Conteúdo principal da página -->
+    
     <swiper-container style="flex: 1;" autoplay="true" speed="1000" loop="true" autoplay-delay="3000">
       <swiper-slide><img src="../../assets/1.png"/></swiper-slide>
       <swiper-slide><img src="../../assets/2.png"/></swiper-slide>
       <swiper-slide><img src="../../assets/3.png"/></swiper-slide>
     </swiper-container>
     <ion-grid>
-      <!-- Linha de Imagens -->
+      
       <ion-row>
         <ion-col size="4">
           <div class="img-container">
@@ -73,7 +73,6 @@
         </ion-col>
       </ion-row>
       
-      <!-- Segunda Linha de Imagens -->
       <ion-row>
         <ion-col size="4">
           <div class="img-container">
@@ -97,120 +96,108 @@
     </ion-grid>
     <h2>Mais Vendidos</h2>
 
-    <!-- Contêiner do Carrossel -->
     <div class="carousel-container" id="carouselContainer">
-      <!-- Cartão do Produto 1 -->
+      
       <div class="product-card">
         <img src="../../assets/home1.png" alt="Produto 1">
         <div class="product-name">Açaí de Garrafa</div>
         <div class="product-price">R$ 13,00</div>
       </div>
   
-      <!-- Cartão do Produto 2 -->
       <div class="product-card">
         <img src="../../assets/home2.png" alt="Produto 2">
         <div class="product-name">Manteiga de Garrafa</div>
         <div class="product-price">R$ 16,49</div>
       </div>
   
-      <!-- Cartão do Produto 3 -->
       <div class="product-card">
         <img src="../../assets/home3.png" alt="Produto 3">
         <div class="product-name">Doce de Leite Viçosa</div>
         <div class="product-price">R$ 25,99</div>
       </div>
   
-      <!-- Cartão do Produto 4 -->
       <div class="product-card">
         <img src="../../assets/home4.png" alt="Produto 1">
         <div class="product-name">Pão de Queijo 1KG</div>
         <div class="product-price">R$ 21,99</div>
       </div>
   
-      <!-- Adicione mais produtos conforme necessário -->
+      
     </div>
 
     <div class="carousel-container">
-      <!-- Cartão 1 -->
+      
       <div class="promo-card">
         <img src="../../assets/card1.png" alt="Card 1" class="product-image">
         <div class="offer-text">
         </div>
       </div>
   
-      <!-- Cartão 2 -->
       <div class="promo-card">
         <img src="../../assets/card2.png" alt="Card 2" class="product-image">
         <div class="offer-text">
         </div>
       </div>
   
-      <!-- Cartão 3 -->
       <div class="promo-card">
         <img src="../../assets/card3.png" alt="Card 3" class="product-image">
         <div class="offer-text">
         </div>
       </div>
   
-      <!-- Adicione mais cartões conforme necessário -->
     </div>
   
     <h2>Promoções</h2>
 
-    <!-- Contêiner do Carrossel -->
     <div class="carousel-container" id="carouselContainer">
-      <!-- Cartão do Produto 1 -->
+      
       <div class="product-card">
         <img src="../../assets/home9.png" alt="Produto 1">
         <div class="product-name">Polpa de Açaí</div>
         <div class="product-price">R$ 2,99</div>
       </div>
   
-      <!-- Cartão do Produto 2 -->
       <div class="product-card">
         <img src="../../assets/home5.png" alt="Produto 2">
         <div class="product-name">Farofa Costelinha Defumada</div>
         <div class="product-price">R$ 8,99</div>
       </div>
   
-      <!-- Cartão do Produto 3 -->
       <div class="product-card">
         <img src="../../assets/home6.png" alt="Produto 3">
         <div class="product-name">Farofa Tradicional</div>
         <div class="product-price">R$ 8,99</div>
       </div>
   
-      <!-- Cartão do Produto 4 -->
       <div class="product-card">
         <img src="../../assets/home7.png" alt="Produto 4">
         <div class="product-name">Azeite de Dendê</div>
         <div class="product-price">R$ 39,90</div>
       </div>
   
-      <!-- Adicione mais produtos conforme necessário -->
     </div>
 
 
-    <ion-grid style="margin-bottom: 15px;">
+    <ion-grid style="margin-bottom: 40px;">
       <h3>Redes Sociais</h3>
       <ion-row>
         <ion-col size="4">
           <ion-button href="https://www.facebook.com" fill="clear" class="spaced-button">
             <ion-icon name="logo-facebook" style="color: #1877F2;"></ion-icon>
           </ion-button>
-          <p class="img-title">FACEBOOK</p>
+          <p class="img-title">Facebook</p>
         </ion-col>
         <ion-col size="4">
           <ion-button href="https://www.instagram.com" fill="clear" class="spaced-button">
             <ion-icon name="logo-instagram" style="color: #E4405F;"></ion-icon>
           </ion-button>
-          <p class="img-title">INSTAGRAM</p>
+          <p class="img-title">Instagram</p>
         </ion-col>
         <ion-col size="4">
           <ion-button href="https://api.whatsapp.com" fill="clear" class="spaced-button">
             <ion-icon name="logo-whatsapp" style="color: #25D366;"></ion-icon>
           </ion-button>
-          <p class="img-title">WHATSAPP</p>
+          <p class="img-title">Whatsapp</p>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -249,7 +236,7 @@
   const carouselContainer = document.getElementById('carouselContainer');
 
   function scrollCarousel(direction) {
-    // A largura de cada produto + margem entre eles
+    
     const scrollAmount = 220; 
     carouselContainer.scrollBy({
       left: direction * scrollAmount,

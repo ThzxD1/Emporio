@@ -26,12 +26,11 @@
 </ion-menu>
 
 
-<!-- Conteúdo principal -->
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar style="--background: #3c2918;">
       <ion-buttons slot="start">
-        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> <!-- Botão para abrir o menu -->
+        <ion-menu-button style="color: whitesmoke;"></ion-menu-button> 
       </ion-buttons>
       <ion-title style="color:#d69d69; text-align: justify; margin-left: 30px;">
         Emporio da Roça GH
@@ -41,18 +40,72 @@
   
   <ion-content *ngIf="!isLoading">
     <ion-card *ngIf="user">
-      <ion-card-header>
-        <ion-card-title>{{ user.fullname }}</ion-card-title>
-        <ion-card-subtitle>{{ user.email }}</ion-card-subtitle>
+      <ion-card-header style="display: flex; align-items: center;">
+        <div *ngIf="user.photoUrl || previewUrl" style="margin-right: 15px;">
+          <img
+            [src]="previewUrl || user.photoUrl"
+            alt="Foto de Perfil"
+            style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+          />
+        </div>
+        <ion-card-title>{{ isEditing ? 'Editar Perfil' : user.fullname }}</ion-card-title>
       </ion-card-header>
+      
       <ion-card-content>
-        <p><strong>CPF:</strong> {{ user.cpf }}</p>
-        <p><strong>Data de Nascimento:</strong> {{ user.dataNasc }}</p>
-        <p><strong>Endereço:</strong> {{ user.endereco }}</p>
+        <form *ngIf="isEditing" (ngSubmit)="saveProfile()">
+          <ion-item lines="none">
+            <ion-label position="stacked">Foto de Perfil</ion-label>
+            <input
+              type="file"
+              id="fileInput"
+              (change)="onFileSelected($event)"
+              style="display: none;"
+              accept="image/*"
+            />
+            <ion-button expand="block" (click)="triggerFileInput()">Selecionar Imagem</ion-button>
+          </ion-item>
+          
+          <div *ngIf="previewUrl">
+            <img
+              [src]="previewUrl"
+              alt="Preview"
+              style="width: 100%; height: auto; margin-top: 10px;"
+            />
+          </div>
+          <ion-item>
+            <ion-label position="floating">Nome Completo</ion-label>
+            <ion-input [(ngModel)]="user.fullname" name="fullname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input [(ngModel)]="user.email" name="email" type="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">CPF</ion-label>
+            <ion-input [(ngModel)]="user.cpf" name="cpf"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Data de Nascimento</ion-label>
+            <ion-input [(ngModel)]="user.dataNasc" name="dataNasc" type="date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Endereço</ion-label>
+            <ion-input [(ngModel)]="user.endereco" name="endereco"></ion-input>
+          </ion-item>
+          <ion-button style="--background: #3c2918;" expand="full" type="submit">Salvar Alterações</ion-button>
+        </form>
+  
+        <div *ngIf="!isEditing">
+          <p><strong>CPF:</strong> {{ user.cpf }}</p>
+          <p><strong>Data de Nascimento:</strong> {{ user.dataNasc }}</p>
+          <p><strong>Endereço:</strong> {{ user.endereco }}</p>
+          <ion-button  style="--background: #3c2918;" expand="full" (click)="toggleEdit()">Editar Perfil</ion-button>
+        </div>
       </ion-card-content>
     </ion-card>
-    <ion-button expand="full" (click)="logout()">Sair</ion-button>
+    <ion-button style="--background: #3c2918;" expand="full" (click)="logout()">Sair</ion-button>
   </ion-content>
+  
 
   <ion-footer>
     <ion-toolbar style="justify-content: space-around; --background: #522f0f;">

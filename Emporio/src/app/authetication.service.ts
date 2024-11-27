@@ -10,13 +10,16 @@ import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
   providedIn: 'root',
 })
 export class AutheticationService {
+  
+  
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
 
   constructor(
     private ngFireAuth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private angularFirestore: AngularFirestore
   ) {
     this.initializeAuthListener();
   }
@@ -30,7 +33,14 @@ export class AutheticationService {
       }
     });
   }
-
+  updateUserProfile(user: any) {
+    const userId = user.id; // Certifique-se de que o campo 'id' está correto
+    return this.angularFirestore
+      .collection('users')
+      .doc(userId)
+      .set(user, { merge: true }); // 'merge: true' adiciona ou atualiza campos
+  }
+  
   private async loadUserData(uid: string) {
     const firestore = getFirestore();
     const userDocRef = doc(firestore, 'users', uid);  // Usando uid como string
