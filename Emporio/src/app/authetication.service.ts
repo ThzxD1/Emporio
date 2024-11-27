@@ -10,6 +10,7 @@ import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
   providedIn: 'root',
 })
 export class AutheticationService {
+
   
   
   private userSubject = new BehaviorSubject<any>(null);
@@ -19,7 +20,8 @@ export class AutheticationService {
     private ngFireAuth: AngularFireAuth,
     private firestore: AngularFirestore,
     private alertController: AlertController,
-    private angularFirestore: AngularFirestore
+    private angularFirestore: AngularFirestore,
+    private afAuth: AngularFireAuth,
   ) {
     this.initializeAuthListener();
   }
@@ -53,6 +55,10 @@ export class AutheticationService {
     }
   }
   
+  async isLoggedIn(): Promise<boolean> {
+    const user = await this.afAuth.currentUser;
+    return !!user; // Retorna true se o usuário estiver logado, false caso contrário
+  }
   async register(
     fullname: string,
     email: string,

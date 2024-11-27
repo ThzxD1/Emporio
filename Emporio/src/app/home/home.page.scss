@@ -59,6 +59,27 @@ swiper-slide img {
 }
 
 
+.product-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-to-cart-btn {
+  background-color: #3c2918; /* Cor de fundo do botão */
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.add-to-cart-btn i {
+  font-size: 16px; /* Tamanho do ícone */
+  color: white; /* Cor do ícone */
+}
+
+
 
 .spaced-button {
   margin: 0 10px; /* Espaçamento padrão */

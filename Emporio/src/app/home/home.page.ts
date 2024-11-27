@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CarrinhoService } from '../services/carrinho.service';
+import { CartService } from '../services/cart.service';
 import { getAuth } from 'firebase/auth';
 import { Router } from '@angular/router';
-
+import { Product } from '../product.model';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,31 +11,22 @@ import { Router } from '@angular/router';
 export class HomePage {
   showSearch: boolean = false; // Variável para controlar a visibilidade da caixa de pesquisa
   searchQuery: string = ''; // Variável para armazenar a consulta de pesquisa
-  products = [
-    { id: 1, name: 'Açaí de Garrafa', price: 13.0, image: '../../assets/home1.png' },
+  products: Product[] = [
+    { id: 1, name: 'Açaí de Garrafa', price: 13, image: '../../assets/home1.png' },
     { id: 2, name: 'Manteiga de Garrafa', price: 16.49, image: '../../assets/home2.png' },
     { id: 3, name: 'Doce de Leite Viçosa', price: 25.99, image: '../../assets/home3.png' },
     { id: 4, name: 'Pão de Queijo 1KG', price: 21.99, image: '../../assets/home4.png' },
   ];
   
-  constructor(private carrinhoService: CarrinhoService, private router: Router) {}
+  constructor(private cartService: CartService, private router: Router) {}
   
   ngOnInit() {
-    this.checkUserAuthentication();
+    
   }
   
-  checkUserAuthentication() {
-    const auth = getAuth();
-    const user = auth.currentUser;
 
-    if (!user) {
-      // Se o usuário não estiver autenticado, redireciona para a página de login
-      this.router.navigate(['/login']);
-    }
-  }
-  addToCarrinho(product: any) {
-    this.carrinhoService.addToCarrinho(product);
-    alert(`${product.name} foi adicionado ao carrinho.`);
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
   }
 
   toggleSearch() {

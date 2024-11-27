@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -25,6 +25,7 @@ import { CarrinhoService } from './services/carrinho.service';
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule,
   HttpClientModule,
+  IonicStorageModule.forRoot(),
   AngularFireDatabaseModule],
   
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, CarrinhoService],

@@ -44,8 +44,26 @@
   <ion-content>
     <h2>Carrinho de Compras</h2>
 
-    <div class="cart-container" id="cartContainer">
-      <!-- Produto 1 -->
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cartItems">
+        <img [src]="item.image" [alt]="item.name" />
+        <div>
+          <h4>{{ item.name }}</h4>
+          <p>R$ {{ item.price }}</p>
+        </div>
+      </div>
+      <div style="margin-top: 20px; text-align: right; font-size: 18px;">
+        <strong>Total:</strong> R$ {{ getTotal() }}
+      </div>
+      <ion-button expand="block" color="success" (click)="finalizarCompra()">Finalizar Compra</ion-button>
+      <ion-button style="margin-bottom: 80px;" expand="block" color="danger" (click)="clearCart()">Limpar Carrinho</ion-button>
+    </div>
+  
+    <ng-template #emptyCart>
+      <ion-text>Carrinho vazio. Adicione produtos para começar!</ion-text>
+    </ng-template>
+   <!-- <div class="cart-container" id="cartContainer">
+       Produto 1 
       <div class="cart-item" data-id="1">
         <div class="item-info">
           <img src="../../assets/home2.png" alt="Produto 1">
@@ -61,7 +79,7 @@
         </div>
       </div>
   
-      <!-- Produto 2 -->
+       Produto 2 
       <div class="cart-item" data-id="2">
         <div class="item-info">
           <img src="../../assets/home1.png" alt="Produto 2">
@@ -79,7 +97,7 @@
     </div>
   
     <div class="cart-summary" id="cartSummary">Total: R$ 30,80</div>
-    <button class="checkout-button">Finalizar Compra</button>
+    <button class="checkout-button">Finalizar Compra</button> -->
   </ion-content>
 
 <ion-footer>
